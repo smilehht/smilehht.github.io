@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .wraper {
+            width: 100px;
+            margin: 50px auto;
+        }
+        .left, .right {
+            float: left;
+            position: relative;
+            width: 50px;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .left-inner, .right-inner {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            border: 5px solid yellowgreen;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+        .left-inner {
+            clip: rect(0px, 100px, 100px, 50px);
+            animation: rotate 2s linear forwards infinite;
+        }
+
+        .right-inner {
+            left: -100%;
+            clip: rect(0px, 50px, 100px, 0px);
+            animation: rotate 2s linear forwards infinite;
+        }
+        @keyframes rotate {
+            form {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <div class="left">
+            <div class="left-inner">
+                
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-inner">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

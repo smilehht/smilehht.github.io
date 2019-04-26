@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>碰撞检测</title>
+	<style>
+		div{
+			height:200px;
+			width:200px;
+			background:green;
+			position:absolute;
+			left:50%;
+			top:50%;
+			margin:-100px auto auto -100px;
+			color:#fff;
+			text-align:center;
+			line-height:200px;
+			font-weight:bold;
+			cursor:pointer;
+		}
+		#div2{
+			left:100px;
+			top:100px;
+			background:red;
+			margin:auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">别撞我！</div>
+	<div id="div2">拖我试试</div>
+</body>
+<script>
+	window.onload=function(){
+		var oDiv1=document.getElementById("div1");
+		var oDiv2=document.getElementById("div2");
+
+		// drag(oDiv1,100);
+		drag(oDiv2,50);
+		//obj拖动对象，distance吸附距离
+		function drag(obj,distance){
+
+			obj.onmousedown=function(ev){
+				var ev=ev||event;
+				var disX=ev.clientX-obj.offsetLeft;
+				var disY=ev.clientY-obj.offsetTop;
+
+				document.onmousemove=function(){
+					var ev=ev||event;
+
+					//获取不动元素的上下左右边界
+					var X1=oDiv1.offsetLeft;
+					var X2=oDiv1.offsetLeft+oDiv1.offsetWidth;
+					var Y1=oDiv1.offsetTop;
+					var Y2=oDiv1.offsetTop+oDiv1.offsetHeight;
+
+					var L1=ev.clientX-disX;
+					var L2=ev.clientX-disX+obj.offsetWidth;
+					var T1=ev.clientY-disY;
+					var T2=ev.clientY-disY+obj.offsetHeight;
+					// console.log("T1:"+T1+",Y2:"+Y2);
+					console.log("L2:"+L2+",X2:"+X1);
+
+					//开始碰撞检测
+					if(L2<X1||L1>X2||T1>Y2||T2<Y1){
+						oDiv1.innerHTML="别撞我！";
+					}
+					else{
+
+						oDiv1.innerHTML="你撞上我了，赔钱！";
+					}
+
+					if(T1<distance){
+						T1=0;
+					}else if(T1>document.documentElement.clientHeight-obj.offsetHeight-distance){
+						T1=document.documentElement.clientHeight-obj.offsetHeight;
+					}
+					if(L1<distance){
+						L1=0;
+					}else if(L1>document.documentElement.clientWidth-obj.offsetWidth-distance){
+						L1=document.documentElement.clientWidth-obj.offsetWidth;
+					}
+
+					obj.style.top=T1+"px";
+					obj.style.left=L1+"px";
+				}
+
+				document.onmouseup=function(){
+					document.onmousemove=obj.onmouseup=null;
+				}
+			}
+		}
+
+
+	}
+</script>
+</html>

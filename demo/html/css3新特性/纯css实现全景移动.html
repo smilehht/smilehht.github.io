@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .intro {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            width: 560px;
+            height: 540px;
+            margin: 0px auto;
+            background-image: url('timg.jpeg');
+            background-size: auto 100%;
+            cursor: pointer;
+            animation: full 3s linear infinite alternate;
+
+            /*设置动画状态*/
+            -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+        }
+
+        .container:hover,.container:focus {
+            /*设置动画状态*/
+            -webkit-animation-play-state: running;
+            animation-play-state: running;
+        }
+
+        @keyframes full {
+            100% {
+                background-position: 100% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class='intro'>鼠标放上去试试</div>
+    <div class='container'></div>
+</body>
+</html>

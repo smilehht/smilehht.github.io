@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<title>全屏滚动</title>
+	<link rel="stylesheet" href="jquery/jquery.fullPage.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body>
+	<header class="header">
+		<div class="header-title">
+			<img src="img/title.png" alt="">
+			<span class="header-introduction">
+				个人简历
+			</span>
+		</div>
+		<div class="header-items">
+			<ul>
+				<a href="https://smilehht.github.io/"><li class="item">主页</li></a>
+				<a href="https://github.com/smilehht"><li class="item">GitHub</li></a>
+				<a href="https://smilehht.github.io/demo/"><li class="item">Demo</li></a>
+				<a href="#"><li class="item">关于</li></a>
+			</ul>
+		</div>
+	</header>
+	<div id="fullpages">
+		<div class="section page1">
+			<p class="page1-image">
+				<img src="img/hht.jpg" alt="">
+			</p>
+			<h3 class="page1-sentence">每天进步一点点</h3>
+			<h1 class="page1-name">HHT</h1>
+		</div>
+		<div class="section  page2">
+			<p class="page2-aboutme">关于我</p>
+			<div class="page2-items">
+				<div class="page2-wrap">
+					<ul>
+						<li class="item">
+						<a href="#">
+							<img src="img/item2-1.jpg" alt=""><hr class="line">
+							<p class="name">年龄</p><p class="info">24岁</p>
+						</a>
+						</li>
+						<li class="item">
+							<a href="#">
+								<img src="img/item1-1.jpg" alt=""><hr class="line">
+								<p class="name">学历</p><p class="info">硕士</p>
+							</a>
+						</li>
+						<li class="item">
+							<a href="#">
+								<img src="img/item3-1.jpg" alt=""><hr class="line">
+								<p class="name">坐标</p><p class="info">武汉</p>
+							</a>
+						</li>
+						<li class="item">
+							<a href="#">
+								<img src="img/item4-1.jpg" alt=""><hr class="line">
+								<p class="name">状态</p><p class="info">找实习</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="section  page3">
+			<p class="page3-skills">专业技能</p>
+			<div class="page3-images">
+
+				<li class="page3-imageList"><img src="img/skill1-1.jpg" alt=""><p>HTML</p></li>
+				<li class="page3-imageList"><img src="img/skill2-1.jpg" alt=""><p>CSS</p></li>
+				<li class="page3-imageList"><img src="img/skill3-1.jpeg" alt=""><p>JavaScript</p></li>
+				<li class="page3-imageList"><img src="img/skill4-1.jpg" alt=""><p>Sass</p></li>
+				<li class="page3-imageList"><img src="img/skill5-1.png" alt=""><p>React</p></li>
+			</div>
+		</div>
+		<!-- <div class="section  page4">
+			<h3>第四屏</h3>
+			<p>这是最后一屏</p>
+		</div> -->
+	</div>
+</body>
+<script src="jquery/jquery.min.js"></script>
+<script src="jquery/jquery.fullPage.min.js"></script>
+<script>
+	$(function(){
+		$('#fullpages').fullpage({
+			sectionsColor: ['#1bbc9b', '#4BBFC3', '#fff', '#f90'],	//设置各屏的背景色
+			// sectionsColor: ['#B2E1FB', '#BCE1DA', '#80BF94', '#4B86CC'],	//设置各屏的背景色
+			continuousVertical: true,	//滚动到最后一屏时，继续滚动时回到第一屏
+			"navigation":true,	//设置右侧的导航项目
+			// loopBottom:true,
+			afterLoad: function(anchorLink, index){
+				//当前页面加载完成后执行相应的函数
+				//此处可添加相应的动画、数据处理、、、
+				if(index == 2){
+					console.log("2");
+				}
+				if(index == 3){
+					console.log("3");
+				}
+				if(index == 4){
+					console.log("4");
+				}
+			}
+
+		});
+
+		//设置自动滚动
+		// setInterval(function(){
+		// 	$.fn.fullpage.moveSectionDown();
+		// }, 2000);
+
+		// setInterval(function(){
+		// 	$.fn.fullpage.moveSlideRight();
+		// }, 3000);
+
+
+	});
+</script>
+</html>

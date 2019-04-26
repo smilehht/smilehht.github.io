@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style/search.css">
+	<script src="../../../build/react.js"></script>
+    <script src="../../../build/react-dom.js"></script>
+  	<script src="../../../build/browser.min.js"></script>
+</head>
+<body>
+	<div id="search"></div>
+</body>
+
+<script type="text/babel">
+
+	var SearchBox=React.createClass({
+		getInitialState:function(){
+			return {data:[]};
+		},
+
+		loadingItem:function(){
+			$.ajax({
+				url:this.props.url,
+				dataType:"json",
+				type:"POST",
+				cache:false,
+				success:function(data){
+					console.log(data);
+					this.setState({data:data});
+				}.bind(this),
+				error:function(){
+					console.log("error");
+				}.bind(this)
+			});
+		},
+
+		componentDidMount:function(){
+			$.ajax({
+				url:this.props.url,
+				dataType:"json",
+				type:"POST",
+				cache:false,
+				success:function(data){
+					console.log(data);
+					this.setState({data:data});
+				}.bind(this),
+				error:function(){
+					console.log("error");
+				}.bind(this)
+			});
+		},
+
+		render:function(){
+			return (
+				<div className="searchBox">
+					<Search  onSearch={this.loadingItem}></Search>
+					<hr />
+					<Results data={this.state.data}></Results>
+				</div>
+					);
+		}
+	});
+
+	var Search=React.createClass({
+
+		search:function(e){
+			var e=e||window.event;
+			if(e.keyCode==13)
+			{
+				console.log("开始查询了");
+				this.props.onSearch();
+			}
+		},
+		render:function(){
+			return (
+				<div className="search">
+					<input type="text" placeholder="Search..." name="key" onKeyDown={this.search} /><br />
+					<input type="checkbox" />Only show products in stock
+				</div>
+			);
+		}
+	});
+
+	var Results=React.createClass({
+
+		render:function(){
+			
+			var i=0;
+			var last="";
+			var str="";
+			var str1='';
+			var str2='';
+
+			var tbody=this.props.data.map(function(goods){
+					goods.category==last?   
+						str=<tr key={i++} className="tr" ref="line" >
+							<td>
+								<input type="checkbox" />
+							</td>
+							<td>
+								{goods.name}
+							</td>
+							<td>
+								{goods.price}
+							</td>
+						</tr>
+						:
+						str=<tr key={i++} >
+							<td>
+								<input type="checkbox" />
+							</td>
+							<td colSpan="2">
+								
+								{goods.category}
+							</td>
+						</tr>
+					
+					last=goods.category;
+				return (str);
+			});
+			return (
+				<div className="results">
+					<table className="resultTable">
+						<thead><tr><th>Select</th><th>Name</th><th>Price</th></tr></thead>
+						<tbody>
+							{tbody}
+						</tbody>
+					</table>
+				</div>
+			);
+		}
+	});
+
+
+
+	//组件的入口
+	ReactDOM.render(
+		<SearchBox url="searchBox.php"></SearchBox>,
+		document.getElementById("search")
+	);
+</script>
+
+<script src="../../../jquery/jquery.js"></script>
+<script src="script/search.js" defer></script>
+<!-- <script defer>
+	$(function(){
+		$('.resultTable').click(function(){
+			console.log("111");
+			$(this).addClass("line")
+			// .siblings().removeClass("line").
+			// end().
+			// find(':radio').attr("checked",true);
+		});
+		// $("#search").click(function(){
+		// 	alert(1);
+		// });
+		console.log($(".searchBox").length);
+	});
+</script> -->
+</html>

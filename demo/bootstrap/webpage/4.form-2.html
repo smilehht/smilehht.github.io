@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>表单</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../css/bootstrap-theme.min.css" />
+	<style>
+		div{margin-top:5px;}
+	</style>
+</head>
+<body>
+<div class="container" style="margin-top:20px;">
+	<div class="row">
+
+		<div class="col-md-2" >
+			<label for=""  >用户名</label>
+		</div>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="username" placeholder="请输入用户名">
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<label for="" class="control-label" >密  码</label>
+		</div>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="username" placeholder="请输入密码">
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<label for="" class="col-md-2">文本输入框</label>
+		<div class="col-md-4">
+			<textarea name="text" id="" cols="30" rows="3" class="form-control"></textarea>
+		</div>
+	</div>
+
+</div>	
+
+<div class="container">
+	<div class="row has-warning has-feedback">
+
+		<div class="col-md-2" >
+			<label for=""  >has-warning</label>
+		</div>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="username" placeholder="警告框——黄颜色">
+			<span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row has-error">
+
+		<div class="col-md-2" >
+			<label for=""  >has-error</label>
+		</div>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="username" placeholder="错误框——红颜色">
+			<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+			<span>验证失败</span>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row has-success">
+		<div class="col-md-2" >
+			<label for=""  >has-success</label>
+		</div>
+		<div class="col-md-4">
+			<div class="input-group">
+				<span class="input-group-addon">@</span>
+				<input type="text" class="form-control" name="username" placeholder="正确框——绿颜色" class="">
+			</div>
+			<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+			<span class="sr-only">验证成功</span>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="form-horizontal">
+	<div class="row">
+		<label for="" class="col-md-2">文本输入框</label>
+		<div class="col-md-4">
+			<textarea name="text" id="" cols="30" rows="3" class="form-control" disabled="disabled"></textarea>
+		</div>
+	</div>
+</div> -->
+
+
+<!-- <div class="form-group has-warning has-feedback">
+
+		<div class="col-md-2" >
+			<label for=""  >has-warning</label>
+		</div>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="username" placeholder="警告框——黄颜色">
+			<span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+		</div>
+</div> -->
+
+
+</body>
+</html>
