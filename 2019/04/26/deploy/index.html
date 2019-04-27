@@ -17,7 +17,7 @@
 <meta property="og:description" content="一、为什么要前后端分离部署 —— 解耦传统的前后端开发模式是前端开发完成后将html、css、js等静态资源传给后端，然后由后端对静态资源进行部署，并配置相应的路径指向对应的html。这种模式存在很大的一个问题是前后端的耦合很紧密，前端修改内容后依靠后端上线(即使后端不改)，或者后端的更改也可能会影响前端。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/04/26/deploy/deploy.png">
-<meta property="og:updated_time" content="2019-04-26T03:12:30.241Z">
+<meta property="og:updated_time" content="2019-04-27T09:45:52.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前后端分离部署">
 <meta name="twitter:description" content="一、为什么要前后端分离部署 —— 解耦传统的前后端开发模式是前端开发完成后将html、css、js等静态资源传给后端，然后由后端对静态资源进行部署，并配置相应的路径指向对应的html。这种模式存在很大的一个问题是前后端的耦合很紧密，前端修改内容后依靠后端上线(即使后端不改)，或者后端的更改也可能会影响前端。">
@@ -205,6 +205,7 @@
 </ul>
 <p>1、借助Nginx反向代理来解决跨域</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// nginx.conf文件</span><br><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">    listen 80; // 默认访问80端口</span><br><span class="line">    server_name XXX.com; // 域名</span><br><span class="line">    root &quot;C:/front_end/build&quot;; // 前端静态文件的存放目录</span><br><span class="line">    location / &#123;</span><br><span class="line">      try_files $uri /index.html;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // nginx的反向代理来解决跨域，&apos;/api&apos;——接口的路径</span><br><span class="line">    location /api &#123;</span><br><span class="line">        // 前端请求路径以/api开头时，Nginx会代理到proxy_pass上</span><br><span class="line">        proxy_pass http://localhost:8082; // 后端运行的端口</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection ‘upgrade’;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_cache_bypass $http_upgrade;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>Nginx的相关知识，请查阅<a href="https://mp.weixin.qq.com/s/BA_JZ_kMBFZBE7jjQDNc1Q" target="_blank" rel="noopener">前端开发者必备的 Nginx 知识</a>，这篇文章讲的很详细</p>
 <p>2、后端处理<br>前端需要跨域需要后端设置Access-Control-Allow-Origin字段，设置为*或者对应域名</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: * // 允许来自任何域名的跨域请求</span><br><span class="line">或</span><br><span class="line">Access-Control-Allow-Origin: http://www.google.com // 允许来自特定域名的跨域请求</span><br></pre></td></tr></table></figure>
 <p>3、特殊情况</p>
@@ -340,6 +341,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/04/27/ssh/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SSH
+        
+      </div>
+    </a>
   
   
     <a href="/2019/03/23/debug/" id="article-nav-older" class="article-nav-link-wrap">
@@ -490,6 +500,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">My-first-post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
@@ -498,7 +512,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">My-first-post</a>
+                <a href="javascript:void(0)" class="js-tag color2">full-screen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">deploy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">配置</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,7 +532,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">full-screen</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,14 +557,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">debug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">deploy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
               </li>
             
             <div class="clearfix"></div>
