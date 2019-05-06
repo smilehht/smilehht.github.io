@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: pictures | smilehht</title>
+  <title>Nginx | smilehht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="smilehht">
-<meta property="og:url" content="http://yoursite.com/tags/pictures/index.html">
+  <meta name="description" content="1、为什么需要Nginx在无Nginx模式下，用户直接访问server，server对每个用户进行响应，当同一时间user的访问量过大时，server就会过载，甚至会宕机，从而导致服务不可用。Tomcat的并发量在500左右，当访问量大于500时，整个服务的稳定性和体验会大打折扣。">
+<meta name="keywords" content="nginx,服务端配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx">
+<meta property="og:url" content="http://yoursite.com/2019/05/06/nginx/index.html">
 <meta property="og:site_name" content="smilehht">
+<meta property="og:description" content="1、为什么需要Nginx在无Nginx模式下，用户直接访问server，server对每个用户进行响应，当同一时间user的访问量过大时，server就会过载，甚至会宕机，从而导致服务不可用。Tomcat的并发量在500左右，当访问量大于500时，整个服务的稳定性和体验会大打折扣。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/nginx/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/nginx/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/nginx/3.png">
+<meta property="og:updated_time" content="2019-05-06T04:51:20.040Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="smilehht">
+<meta name="twitter:title" content="Nginx">
+<meta name="twitter:description" content="1、为什么需要Nginx在无Nginx模式下，用户直接访问server，server对每个用户进行响应，当同一时间user的访问量过大时，server就会过载，甚至会宕机，从而导致服务不可用。Tomcat的并发量在500左右，当访问量大于500时，整个服务的稳定性和体验会大打折扣。">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/06/nginx/1.png">
   
     <link rel="alternative" href="/atom.xml" title="smilehht" type="application/atom+xml">
   
@@ -152,60 +161,219 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-nginx" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/01/pictures/" class="archive-article-date">
-  	<time datetime="2018-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/01/pictures/">图片格式介绍</a>
+    <h1 class="article-title" itemprop="name">
+      Nginx
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/05/06/nginx/" class="archive-article-date">
+  	<time datetime="2019-05-06T04:43:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1、为什么需要Nginx"><a href="#1、为什么需要Nginx" class="headerlink" title="1、为什么需要Nginx"></a>1、为什么需要Nginx</h4><p>在无Nginx模式下，用户直接访问server，server对每个用户进行响应，当同一时间user的访问量过大时，server就会过载，甚至会宕机，从而导致服务不可用。Tomcat的并发量在500左右，当访问量大于500时，整个服务的稳定性和体验会大打折扣。</p>
+<p><img src="/2019/05/06/nginx/1.png" width="80%"></p>
+<a id="more"></a>
+<p>当一台服务器处理能力有限的时候，我们可以通过增加server来分担压力，这样并发的压力就会大大降低，而且server的稳定性也会大幅提升。那么对于用户的访问请求应该由哪个server来响应呢，分发服务器Nginx就应运而生了。</p>
+<p>Nginx采用反向代理的方式，将用户的请求分发到各个server上，各个server把处理后的结果返回给Nginx，Nginx再返回给用户。Nginx在整个过程中分发请求，作为负载均衡器。</p>
+<p><img src="/2019/05/06/nginx/2.png" width="80%"></p>
+<h4 id="2、启动与关闭"><a href="#2、启动与关闭" class="headerlink" title="2、启动与关闭"></a>2、启动与关闭</h4><p><strong>1、启动Nginx</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -c xxx/xxx/nginx.conf</span><br></pre></td></tr></table></figure>
+<p><strong>2、关闭Nginx</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 查看Nginx进程号</span><br><span class="line">ps -ef|grep nginx</span><br><span class="line"></span><br><span class="line"># 杀死Nginx进程</span><br><span class="line">kill -QUIT 进程id</span><br></pre></td></tr></table></figure>
+<p><strong>3、重启Nginx</strong> —— 修改配置后重新加载生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+<h4 id="3、通过不同端口配置虚拟机"><a href="#3、通过不同端口配置虚拟机" class="headerlink" title="3、通过不同端口配置虚拟机"></a>3、通过不同端口配置虚拟机</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    # 端口1</span><br><span class="line">    server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name localhost;</span><br><span class="line">        location / &#123;</span><br><span class="line">            # 设置根文件夹</span><br><span class="line">            root html_80;</span><br><span class="line">            index index.html index.htm</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    # 端口2</span><br><span class="line">    server &#123;</span><br><span class="line">        listen 81;</span><br><span class="line">        server_name localhost;</span><br><span class="line">        location / &#123;</span><br><span class="line">            # 设置根文件夹</span><br><span class="line">            root html_81;</span><br><span class="line">            index index.html index.htm</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4、通过域名配置虚拟机"><a href="#4、通过域名配置虚拟机" class="headerlink" title="4、通过域名配置虚拟机"></a>4、通过域名配置虚拟机</h4><ul>
+<li>不同的域名可通过绑定host来测试</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    # server1</span><br><span class="line">    server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name 域名1;</span><br><span class="line">        location / &#123;</span><br><span class="line">            # 设置根文件夹</span><br><span class="line">            root html_80;</span><br><span class="line">            index index.html index.htm</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    # server2</span><br><span class="line">    server &#123;</span><br><span class="line">        listen 81;</span><br><span class="line">        server_name 域名2;</span><br><span class="line">        location / &#123;</span><br><span class="line">            # 设置根文件夹</span><br><span class="line">            root html_81;</span><br><span class="line">            index index.html index.htm</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5、反向代理与负载均衡"><a href="#5、反向代理与负载均衡" class="headerlink" title="5、反向代理与负载均衡"></a>5、反向代理与负载均衡</h4><ul>
+<li>upstream 配置服务器具体地址，负载均衡配置不可或缺的部分</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    </span><br><span class="line">    # 提供服务的server</span><br><span class="line">    upstream server_address &#123;</span><br><span class="line">        server ip1:port1;</span><br><span class="line">        server ip2:port2;</span><br><span class="line">        ...</span><br><span class="line">        # weight为权重，默认权重为1，其他配置含义：在20s(fail_timeout)内失败3次(max_fails)表示该主机不可用，使用其他主机</span><br><span class="line">        server ipN:portN weight=2 max_fails=3 fail_timeout=20s;</span><br><span class="line">    &#125;</span><br><span class="line">    # server1</span><br><span class="line">    server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name 域名1;</span><br><span class="line">        location / &#123;</span><br><span class="line">            # 提供服务的server</span><br><span class="line">            proxy_pass  server_address;</span><br><span class="line">            index index.html index.htm</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="6、实现主备-——-双机热备"><a href="#6、实现主备-——-双机热备" class="headerlink" title="6、实现主备 —— 双机热备"></a>6、实现主备 —— 双机热备</h4><ul>
+<li>Question：为什么需要双机热备？</li>
+<li>在上述的结构中，一台Nginx服务器负责所有server的转发任务，为防止Nginx服务器发生故障，提高Nginx服务的稳定性，需要提供一台备用的Nginx服务器，主服务器为master，备用服务器为backup，配置两台Nginx构建出高可用负载均衡的服务器。这种结构一般在超大并发量上场景中使用，并发量较小的单台Nginx即可(Nginx的最大并发量为5万)。</li>
+</ul>
+<p><img src="/2019/05/06/nginx/3.png" width="80%"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pictures</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">服务端配置</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/06/nginx/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/04/27/ssh/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SSH</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、为什么需要Nginx"><span class="toc-number">1.</span> <span class="toc-text">1、为什么需要Nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、启动与关闭"><span class="toc-number">2.</span> <span class="toc-text">2、启动与关闭</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、通过不同端口配置虚拟机"><span class="toc-number">3.</span> <span class="toc-text">3、通过不同端口配置虚拟机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、通过域名配置虚拟机"><span class="toc-number">4.</span> <span class="toc-text">4、通过域名配置虚拟机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、反向代理与负载均衡"><span class="toc-number">5.</span> <span class="toc-text">5、反向代理与负载均衡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、实现主备-——-双机热备"><span class="toc-number">6.</span> <span class="toc-text">6、实现主备 —— 双机热备</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -234,9 +402,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
