@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 云笔记 | smilehht</title>
+  <title>微信分享朋友、朋友圈 | smilehht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="smilehht">
-<meta property="og:url" content="http://yoursite.com/tags/云笔记/index.html">
+  <meta name="description" content="微信分享朋友、朋友圈的探索也是一部血泪史，充满了焦虑、迷茫、辛酸。 微信是一款常用的社交工具，在微信中通过分享传播来提高PV/UV是一种重要的营销方式。">
+<meta name="keywords" content="微信分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信分享朋友、朋友圈">
+<meta property="og:url" content="http://yoursite.com/2019/06/08/wxshare/index.html">
 <meta property="og:site_name" content="smilehht">
+<meta property="og:description" content="微信分享朋友、朋友圈的探索也是一部血泪史，充满了焦虑、迷茫、辛酸。 微信是一款常用的社交工具，在微信中通过分享传播来提高PV/UV是一种重要的营销方式。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-08T04:14:13.732Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="smilehht">
+<meta name="twitter:title" content="微信分享朋友、朋友圈">
+<meta name="twitter:description" content="微信分享朋友、朋友圈的探索也是一部血泪史，充满了焦虑、迷茫、辛酸。 微信是一款常用的社交工具，在微信中通过分享传播来提高PV/UV是一种重要的营销方式。">
   
     <link rel="alternative" href="/atom.xml" title="smilehht" type="application/atom+xml">
   
@@ -152,116 +157,218 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-wxshare" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/15/react-router-4/" class="archive-article-date">
-  	<time datetime="2018-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/15/react-router-4/">react-router-4</a>
+    <h1 class="article-title" itemprop="name">
+      微信分享朋友、朋友圈
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/06/08/wxshare/" class="archive-article-date">
+  	<time datetime="2019-06-08T04:11:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>微信分享朋友、朋友圈的探索也是一部血泪史，充满了焦虑、迷茫、辛酸。</p>
+<p>微信是一款常用的社交工具，在微信中通过分享传播来提高PV/UV是一种重要的营销方式。</p>
+<a id="more"></a>
+<h2 id="微信分享的步骤"><a href="#微信分享的步骤" class="headerlink" title="微信分享的步骤"></a>微信分享的步骤</h2><ul>
+<li><p>公众号绑定域名（这个域名值页面的域名，而非后端接口的域名，因为分享出去的是前端链接）</p>
+</li>
+<li><p>引入JS文件（<a href="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js" target="_blank" rel="noopener">http://res2.wx.qq.com/open/js/jweixin-1.4.0.js</a> ）</p>
+</li>
+<li><p>通过config接口注入权限验证配置</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wx.config(&#123;</span><br><span class="line">    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来</span><br><span class="line">    appId: &apos;&apos;, // 必填，公众号的唯一标识</span><br><span class="line">    timestamp: , // 必填，生成签名的时间戳</span><br><span class="line">    nonceStr: &apos;&apos;, // 必填，生成签名的随机串</span><br><span class="line">    signature: &apos;&apos;,// 必填，签名</span><br><span class="line">    jsApiList: [] // 必填，需要使用的JS接口列表</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分享好友，分享朋友圈</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">wx.ready(function () &#123;   //需在用户可能点击分享按钮前就先调用</span><br><span class="line">    </span><br><span class="line">    // 分享给好友</span><br><span class="line">    wx.updateAppMessageShareData(&#123; </span><br><span class="line">        title: &apos;&apos;, // 分享标题</span><br><span class="line">        desc: &apos;&apos;, // 分享描述</span><br><span class="line">        link: &apos;&apos;, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span><br><span class="line">        imgUrl: &apos;&apos;, // 分享图标</span><br><span class="line">        success: function () &#123;</span><br><span class="line">          // 设置成功</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    // 分享朋友圈</span><br><span class="line">    wx.updateAppMessageShareData(&#123; </span><br><span class="line">        title: &apos;&apos;, // 分享标题</span><br><span class="line">        desc: &apos;&apos;, // 分享描述</span><br><span class="line">        link: &apos;&apos;, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span><br><span class="line">        imgUrl: &apos;&apos;, // 分享图标</span><br><span class="line">        success: function () &#123;</span><br><span class="line">          // 设置成功</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>经过说明文档的一系列设置，觉得应该没问题的，然而事实跟预想不太一样。在Android下能分享成功，在iOS下分享不成功。</p>
+<p>在获取签名的时候需要将当前页面的url传给后端，然后后端生成wx.config所需要的各种参数。</p>
+<ul>
+<li>问题一</li>
+</ul>
+<p>在开发中页面使用的history的路由模式，经过查验发现iOS对于push路由的解析方式不同，导致获取当前页面的url是上一个页面的而非分享页面，为了解决这个问题，在跳转到分享页时通过window.location.href的方式跳转，而非采用框架中跳转路由的方法。</p>
+<ul>
+<li>问题二</li>
+</ul>
+<p>iOS在分享过程中并不会出现每次都分享成功的情况。经过调试发现（wx.config中debug字段设为true），wx.config没有问题，wx.updateAppMessageShareData的方法执行不成功，时而成功，时而失败，为了解决问题，在网上搜索了各种解决问题方案，都不太好使。由于项目希望尽快上线，所以在处理的时候采用了兼容性方案，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">function wxH5Share(config) &#123;</span><br><span class="line">    /* </span><br><span class="line">    config示例：</span><br><span class="line">    &#123;</span><br><span class="line">        title: &apos;xxxxx&apos;,</span><br><span class="line">        desc: &apos;xxxxx&apos;,</span><br><span class="line">        link: &apos;https://xxxx&apos;,</span><br><span class="line">        imgUrl: &apos;https://xxxx&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    */</span><br><span class="line">    if (!config) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    let &#123;title, desc, link, imgUrl&#125; = config;</span><br><span class="line">    if (!(title &amp;&amp; desc &amp;&amp; link &amp;&amp; imgUrl)) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    wx.ready(() =&gt; &#123;</span><br><span class="line">        // 设置分享朋友圈标题内容图片</span><br><span class="line">        if (wx.onMenuShareAppMessage) &#123;</span><br><span class="line">            wx.onMenuShareAppMessage(&#123;</span><br><span class="line">                title: title,</span><br><span class="line">                desc: desc,</span><br><span class="line">                link: link,</span><br><span class="line">                imgUrl: imgUrl,</span><br><span class="line">                fail: () =&gt; &#123;</span><br><span class="line">                    // 如果wx.onMenuShareAppMessage失败，则用updateAppMessageShareData分享</span><br><span class="line">                    if (wx.updateAppMessageShareData) &#123;</span><br><span class="line">                        wx.updateAppMessageShareData(config);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; else if (wx.updateAppMessageShareData) &#123;</span><br><span class="line">            // 如果wx.onMenuShareAppMessage不存在，则用updateAppMessageShareData分享</span><br><span class="line">            wx.updateAppMessageShareData(config);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 设置分享朋友圈标题内容图片</span><br><span class="line">        if(wx.onMenuShareTimeline) &#123;</span><br><span class="line">            wx.onMenuShareTimeline(&#123;</span><br><span class="line">                title: title,</span><br><span class="line">                desc: desc,</span><br><span class="line">                link: link,</span><br><span class="line">                imgUrl: imgUrl,</span><br><span class="line">                fail: () =&gt; &#123;</span><br><span class="line">                    // 如果wx.onMenuShareTimeline失败，则用updateTimelineShareData分享</span><br><span class="line">                    if (wx.updateTimelineShareData) &#123;</span><br><span class="line">                        wx.updateTimelineShareData(config);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; else if (wx.updateTimelineShareData) &#123;</span><br><span class="line">            // 如果wx.onMenuShareTimeline不存在，则用updateTimelineShareData分享</span><br><span class="line">            wx.updateTimelineShareData(config);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在分享时，先采用老的分享接口wx.onMenuShareAppMessage，如果老的分享接口不存在或者分享失败，则采用新的分享接口，这样双重验证，保证了在绝大多数情况下能分享成功。</p>
+<p>以上的问题困扰了好几天，然后通过读文档，搜文问题，每个环节进行验证，不断探索解决方案，最终终于实现了所需的功能，长吁一口气，终于好了。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">云笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react router</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">微信分享</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/08/wxshare/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/08/clipboard/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">复制到剪切板</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/28/design-pattern/" class="archive-article-date">
-  	<time datetime="2017-12-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-28</time>
-</a>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#微信分享的步骤"><span class="toc-number">1.</span> <span class="toc-text">微信分享的步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">1.1.</span> <span class="toc-text">问题</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-    	 
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/28/design-pattern/">Javascript 设计模式与开发实践</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">云笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -290,9 +397,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
