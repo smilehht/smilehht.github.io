@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/7 | smilehht</title>
+  <title>复制到剪切板 | smilehht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="smilehht">
-<meta property="og:url" content="http://yoursite.com/archives/2017/07/index.html">
+  <meta name="description" content="在工作中有一个业务场景是在移动端复制内容，而移动端可能会在Android、iOS和PC端的浏览器运行，这就要求复制内容这一功能具有很强的兼容性。 经过调研发现可以有以下两种方法可以实现复制功能：  使用clipboard.js实现复制 原生方式实现复制">
+<meta name="keywords" content="copy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复制到剪切板">
+<meta property="og:url" content="http://yoursite.com/2019/06/08/clipboard/index.html">
 <meta property="og:site_name" content="smilehht">
+<meta property="og:description" content="在工作中有一个业务场景是在移动端复制内容，而移动端可能会在Android、iOS和PC端的浏览器运行，这就要求复制内容这一功能具有很强的兼容性。 经过调研发现可以有以下两种方法可以实现复制功能：  使用clipboard.js实现复制 原生方式实现复制">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/06/08/clipboard/1.png">
+<meta property="og:updated_time" content="2019-06-08T02:55:49.555Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="smilehht">
+<meta name="twitter:title" content="复制到剪切板">
+<meta name="twitter:description" content="在工作中有一个业务场景是在移动端复制内容，而移动端可能会在Android、iOS和PC端的浏览器运行，这就要求复制内容这一功能具有很强的兼容性。 经过调研发现可以有以下两种方法可以实现复制功能：  使用clipboard.js实现复制 原生方式实现复制">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/08/clipboard/1.png">
   
     <link rel="alternative" href="/atom.xml" title="smilehht" type="application/atom+xml">
   
@@ -152,60 +159,220 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-clipboard" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/full-screen/" class="archive-article-date">
-  	<time datetime="2017-07-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/24/full-screen/">Web应用中实现全屏效果</a>
+    <h1 class="article-title" itemprop="name">
+      复制到剪切板
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/06/08/clipboard/" class="archive-article-date">
+  	<time datetime="2019-06-08T02:49:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在工作中有一个业务场景是在移动端复制内容，而移动端可能会在Android、iOS和PC端的浏览器运行，这就要求复制内容这一功能具有很强的兼容性。</p>
+<p>经过调研发现可以有以下两种方法可以实现复制功能：</p>
+<ul>
+<li>使用clipboard.js实现复制</li>
+<li>原生方式实现复制</li>
+</ul>
+<a id="more"></a>
+<h2 id="clipboard-js"><a href="#clipboard-js" class="headerlink" title="clipboard.js"></a>clipboard.js</h2><p><a href="https://clipboardjs.com/" target="_blank" rel="noopener">clipboard.js</a>是非常强大的复制工具，可以实现复制、剪切，而且js包的体积也非常小，仅有3kb，使用起来也非常简单，兼容性也很好。</p>
+<p><strong>使用方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--引入js--&gt;</span><br><span class="line">&lt;script src=&quot;dist/clipboard.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Target --&gt;</span><br><span class="line">&lt;input id=&quot;foo&quot; value=&quot;https://github.com/zenorocha/clipboard.js.git&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Trigger --&gt;</span><br><span class="line">&lt;button class=&quot;btn&quot; data-clipboard-target=&quot;#foo&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;assets/clippy.svg&quot; alt=&quot;Copy to clipboard&quot;&gt;</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--js--&gt;</span><br><span class="line">new ClipboardJS(&apos;.btn&apos;);</span><br></pre></td></tr></table></figure>
+<p><strong>兼容性</strong></p>
+<p><img src="/2019/06/08/clipboard/1.png" width="50%"></p>
+<p><strong>其他功能</strong></p>
+<ul>
+<li>支持剪切功能</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--剪切功能--&gt;</span><br><span class="line">&lt;!-- Target --&gt;</span><br><span class="line">&lt;textarea id=&quot;bar&quot;&gt;Mussum ipsum cacilds...&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Trigger --&gt;</span><br><span class="line">&lt;button class=&quot;btn&quot; data-clipboard-action=&quot;cut&quot; data-clipboard-target=&quot;#bar&quot;&gt;</span><br><span class="line">    Cut to clipboard</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>支持事件反馈</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var clipboard = new ClipboardJS(&apos;.btn&apos;);</span><br><span class="line"></span><br><span class="line">clipboard.on(&apos;success&apos;, function(e) &#123;</span><br><span class="line">    console.info(&apos;Action:&apos;, e.action);</span><br><span class="line">    console.info(&apos;Text:&apos;, e.text);</span><br><span class="line">    console.info(&apos;Trigger:&apos;, e.trigger);</span><br><span class="line"></span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">clipboard.on(&apos;error&apos;, function(e) &#123;</span><br><span class="line">    console.error(&apos;Action:&apos;, e.action);</span><br><span class="line">    console.error(&apos;Trigger:&apos;, e.trigger);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>尽管clipboard.js功能很强大，兼容性很好，但是还是引入了3kb的js包，如果能用原生的方式实现是不是更好呢？</p>
+<h2 id="原生方式"><a href="#原生方式" class="headerlink" title="原生方式"></a>原生方式</h2><p>废话不多说，上代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--html--&gt;</span><br><span class="line">&lt;input id=&quot;title1&quot; type=&quot;text&quot; value=&quot;复制功能测试&quot; readonly=&quot;readonly&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--js--&gt;</span><br><span class="line">function copyToClipboard() &#123;</span><br><span class="line"></span><br><span class="line">    var Url2 = document.getElementById(&quot;title1&quot;);//要复制文字的节点</span><br><span class="line">    if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) &#123;//区分iPhone设备</span><br><span class="line">        window.getSelection().removeAllRanges();//这段代码必须放在前面否则无效</span><br><span class="line">        var range = document.createRange();</span><br><span class="line">        // 选中需要复制的节点</span><br><span class="line">        range.selectNode(Url2);</span><br><span class="line">        // 执行选中元素</span><br><span class="line">        window.getSelection().addRange(range);</span><br><span class="line">        // 执行 copy 操作</span><br><span class="line">        var successful = document.execCommand(&apos;copy&apos;);</span><br><span class="line"></span><br><span class="line">        // 移除选中的元素</span><br><span class="line">        window.getSelection().removeAllRanges();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        Url2.select(); // 选择对象</span><br><span class="line">        document.execCommand(&quot;Copy&quot;); // 执行浏览器复制命令</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述是在网络上找的复制代码的方式，经过测试发现在大多数机型下复制到剪切板是没有问题的，但是在iOS下的某些机型复制不成功，如iPhone 7、iPhone 8等其他机型。</p>
+<p> 那么问题来了，如何才能复制成功呢？见以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--html--&gt;</span><br><span class="line">&lt;textarea id=&apos;share-link&apos; value=&apos;待复制的内容&apos; className=&apos;share-link&apos; readonly=&apos;readonly&apos;&gt;</span><br><span class="line">&lt;/textarea&gt;</span><br><span class="line">            </span><br><span class="line">&lt;!--js--&gt;  </span><br><span class="line">function copyToClipboard() &#123;</span><br><span class="line"></span><br><span class="line">    let url = document.getElementById(&apos;share-link&apos;);//要复制文字的节点</span><br><span class="line">    url.select(); // 选择对象</span><br><span class="line">    if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) &#123;//区分iPhone设备</span><br><span class="line">        url.setSelectionRange(0, 待复制的内容的长度)</span><br><span class="line">    &#125;</span><br><span class="line">    document.execCommand(&apos;Copy&apos;); // 执行浏览器复制命令</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：原生方式需要对iOS系统做兼容处理，不然复制不上。示例中用的是textarea，亦可用input。</p>
+<p>在实际项目开发中，我选择原生的方式，相比clipboard.js方式，原生的代码更简单，而且不用引入第三方库，理论上加载速度会更快，用户体验更流畅</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>复制功能在很多场景都会用到，如今把自己踩得坑写下来，记录那些难忘的补坑经历，然后一步步的成长，享受这种痛并快乐的时光。</p>
+<p>以上总结了两种复制到剪切板的方法，前者为第三方库，功能强大，可实现各种场景的复制功能。后者为原生方式，代码量并不多，可实现基本的复制功能。在写代码时可根据自己所需选择合适的复制方式。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">full-screen</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">copy</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/08/clipboard/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/05/26/vim/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vim 命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#clipboard-js"><span class="toc-number">1.</span> <span class="toc-text">clipboard.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原生方式"><span class="toc-number">2.</span> <span class="toc-text">原生方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -234,8 +401,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
