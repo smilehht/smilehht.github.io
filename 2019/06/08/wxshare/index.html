@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="smilehht">
 <meta property="og:description" content="微信分享朋友、朋友圈的探索也是一部血泪史，充满了焦虑、迷茫、辛酸。 微信是一款常用的社交工具，在微信中通过分享传播来提高PV/UV是一种重要的营销方式。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-08T04:14:13.732Z">
+<meta property="og:updated_time" content="2019-06-08T04:16:41.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信分享朋友、朋友圈">
 <meta name="twitter:description" content="微信分享朋友、朋友圈的探索也是一部血泪史，充满了焦虑、迷茫、辛酸。 微信是一款常用的社交工具，在微信中通过分享传播来提高PV/UV是一种重要的营销方式。">
@@ -205,7 +205,7 @@
 <p>iOS在分享过程中并不会出现每次都分享成功的情况。经过调试发现（wx.config中debug字段设为true），wx.config没有问题，wx.updateAppMessageShareData的方法执行不成功，时而成功，时而失败，为了解决问题，在网上搜索了各种解决问题方案，都不太好使。由于项目希望尽快上线，所以在处理的时候采用了兼容性方案，如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">function wxH5Share(config) &#123;</span><br><span class="line">    /* </span><br><span class="line">    config示例：</span><br><span class="line">    &#123;</span><br><span class="line">        title: &apos;xxxxx&apos;,</span><br><span class="line">        desc: &apos;xxxxx&apos;,</span><br><span class="line">        link: &apos;https://xxxx&apos;,</span><br><span class="line">        imgUrl: &apos;https://xxxx&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    */</span><br><span class="line">    if (!config) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    let &#123;title, desc, link, imgUrl&#125; = config;</span><br><span class="line">    if (!(title &amp;&amp; desc &amp;&amp; link &amp;&amp; imgUrl)) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    wx.ready(() =&gt; &#123;</span><br><span class="line">        // 设置分享朋友圈标题内容图片</span><br><span class="line">        if (wx.onMenuShareAppMessage) &#123;</span><br><span class="line">            wx.onMenuShareAppMessage(&#123;</span><br><span class="line">                title: title,</span><br><span class="line">                desc: desc,</span><br><span class="line">                link: link,</span><br><span class="line">                imgUrl: imgUrl,</span><br><span class="line">                fail: () =&gt; &#123;</span><br><span class="line">                    // 如果wx.onMenuShareAppMessage失败，则用updateAppMessageShareData分享</span><br><span class="line">                    if (wx.updateAppMessageShareData) &#123;</span><br><span class="line">                        wx.updateAppMessageShareData(config);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; else if (wx.updateAppMessageShareData) &#123;</span><br><span class="line">            // 如果wx.onMenuShareAppMessage不存在，则用updateAppMessageShareData分享</span><br><span class="line">            wx.updateAppMessageShareData(config);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 设置分享朋友圈标题内容图片</span><br><span class="line">        if(wx.onMenuShareTimeline) &#123;</span><br><span class="line">            wx.onMenuShareTimeline(&#123;</span><br><span class="line">                title: title,</span><br><span class="line">                desc: desc,</span><br><span class="line">                link: link,</span><br><span class="line">                imgUrl: imgUrl,</span><br><span class="line">                fail: () =&gt; &#123;</span><br><span class="line">                    // 如果wx.onMenuShareTimeline失败，则用updateTimelineShareData分享</span><br><span class="line">                    if (wx.updateTimelineShareData) &#123;</span><br><span class="line">                        wx.updateTimelineShareData(config);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; else if (wx.updateTimelineShareData) &#123;</span><br><span class="line">            // 如果wx.onMenuShareTimeline不存在，则用updateTimelineShareData分享</span><br><span class="line">            wx.updateTimelineShareData(config);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在分享时，先采用老的分享接口wx.onMenuShareAppMessage，如果老的分享接口不存在或者分享失败，则采用新的分享接口，这样双重验证，保证了在绝大多数情况下能分享成功。</p>
-<p>以上的问题困扰了好几天，然后通过读文档，搜文问题，每个环节进行验证，不断探索解决方案，最终终于实现了所需的功能，长吁一口气，终于好了。</p>
+<p>以上的问题困扰了好几天，然后通过读文档，搜索问题，每个环节进行验证，不断探索解决方案，最终终于实现了所需的功能，长吁一口气，终于好了。</p>
 
       
 
@@ -477,31 +477,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">My-first-post</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">copy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">flex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">布局</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">full-screen</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,15 +489,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">云笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">flex</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">布局</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">full-screen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">My-first-post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">服务端配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,6 +533,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">require</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -541,11 +545,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">require</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">微信分享</a>
+                <a href="javascript:void(0)" class="js-tag color3">command</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,11 +557,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">command</a>
+                <a href="javascript:void(0)" class="js-tag color5">微信分享</a>
               </li>
              
               <li class="article-tag-list-item">
