@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <svg width='100%' height='100%'>
+        <text id='text' x='100' y='200' style='font-size: 14px;color: #000' class="">
+        </text>
+    </svg>
+    <script>
+        var text = document.getElementById('text');
+        var str = 'ZYXWVUTSRQPONMLKJIHGFEDCBA';
+        // y = A * sin(w * x + b)
+        var A = 80;
+        var W = .4;
+        var B = 0;
+
+        var len = str.length;
+        var dx = []
+        var dy = []
+        var cur = 0;
+        var t = 0
+
+        while(cur++ < len - 1) {
+            dx.push(10);
+            var el = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+            el.textContent = str[cur]
+            var h = Math.round(cur/len * 360);
+            el.setAttribute('fill', 'hsl(' + h + ',100%, 60%)');
+            text.appendChild(el);
+        }
+
+        function countDy(t) {
+            var cur = 0;
+            var ly = 0;
+            dy = [];
+            while(cur < len) {
+                var y = - A * Math.sin(W * cur + t)
+                dy.push(y - ly);
+                ly = y;
+                cur++ 
+            }
+        }
+
+        function render() {
+            text.setAttribute('dx', dx.join(' '));
+            text.setAttribute('dy', dy.join(' '));
+        }
+        function frame() {
+            t = t + 0.02;
+            countDy(t);
+            render()
+            requestAnimationFrame(frame);
+        }
+
+        frame()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        .wrapper {
+            display: flex;
+            height: 100%;
+            border: #d8d8d8 1px solid;
+        }
+
+        .left {
+            width: 300px;
+            border-right: #d8d8d8 1px solid;
+        }
+
+        .right {
+            flex: 1;
+        }
+
+        .title {
+            padding: 10px;
+            background-color: #d8d8d8;
+        }
+
+        .creates {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .create {
+            padding: 5px;
+            margin-right: 20px;
+        }
+
+        .shapes, .appearance {
+            padding: 20px;
+        }
+        .shapes div, .appearance div {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="left">
+            <h3 class='title'>创建</h3>
+            <div id='creates' class="creates">
+            </div>
+            <h3 class='title'>形状</h3>
+            <div id='shapes' class="shapes">
+            </div>
+            <h3 class='title'>外观</h3>
+            <div id='appearance' class="appearance">
+                <div>
+                    <label for="">
+                        填充
+                    </label>
+                    <input id='fill' type="color" data-type='fill'>
+                </div>
+                <div>
+                    <label for="">
+                        描边
+                    </label>
+                    <input  id='stroke' type="color" data-type='stroke'>
+                    <!-- <input type="range" data-type='stroke-width' min=0 max=200> -->
+                </div>
+            </div>
+        </div>
+        <div id='right' class="right">
+            <svg id='svg' width='100%' height='100%' viewBox='0 0 1000 1000'></svg>
+        </div>
+    </div>
+    <script>
+        var obj = {
+            rect: {
+                x: 20,
+                y:20,
+                width: 200,
+                height: 200,
+                stroke: '#F44336',
+                fill: '#9C27B0',
+                'stroke-width': 5
+            },
+            circle: {
+                cx: 300,
+                cy: 300,
+                r: 50,
+                stroke: '#673AB7',
+                fill: '#CDDC39',
+                'stroke-width': 5
+            },
+            ellipse: {
+                cx: 100,
+                cy: 100,
+                rx: 100,
+                ry: 50,
+                stroke: '#FF5722',
+                fill: '#1f00ff',
+                'stroke-width': 5
+            },
+            line: {
+                x1: 10,
+                y1: 10,
+                x2: 100,
+                y2: 100,
+                stroke: '#4CAF50',
+                fill: '#1f00ff',
+                'stroke-width': 5
+            }
+        }
+        var creates = document.getElementById('creates');
+        let keys = Object.keys(obj);
+        
+        let svg = document.getElementById('svg');
+        let shapes = document.getElementById('shapes');
+        let fill = document.getElementById('fill');
+        let stroke = document.getElementById('stroke');
+        let appearance = document.getElementById('appearance');
+
+        let selected;
+        let min = 0;
+        let max = 800;
+
+        // 添加创建的buttons
+        keys.forEach(function (item) {
+            var el = document.createElement('button');
+            el.className = 'create';
+            el.innerText = item;
+            el.setAttribute('data-type', item);
+            creates.appendChild(el);
+        });
+
+        // 处理创建
+        creates.addEventListener('click', function(e) {
+            let type = e.target.dataset.type;
+            if (!obj[type]) {
+                return;
+            }
+
+            shapes.innerHTML = '';
+            // 创建元素，添加默认属性
+            selected = createSvgElement(type, obj[type]);
+            svg.appendChild(selected);
+
+            for (var item in obj[type]) {
+                // createGroupElement(item, obj[type][item])
+
+                if (['fill', 'stroke'].includes(item)) {
+                    item == 'fill' && (fill.value = obj[type][item])
+                    item == 'stroke' && (stroke.value = obj[type][item])
+                } else {
+                    createGroupElement(item, obj[type][item])
+                }
+            }
+
+        }, false);
+
+        // svg
+        svg.addEventListener('click', function(e) {
+            let target = e.target;
+            let tagName = e.target.tagName;
+            selected = target;
+
+            shapes.innerHTML = '';
+
+            if (!tagName || !obj[tagName]) {
+                return;
+            }
+
+            for (var item in obj[tagName]) {
+                let val = target.getAttribute(item);
+                if (['fill', 'stroke'].includes(item)) {
+                    item == 'fill' && (fill.value = val)
+                    item == 'stroke' && (stroke.value = val)
+                } else {
+                    createGroupElement(item, val)
+                }
+                
+            }
+
+        }, false);
+
+        // 属性发生变化
+        shapes.addEventListener('input', function(e) {
+            let target = e.target;
+            let type = target.dataset.type;
+            let value = target.value;
+            selected.setAttribute(type, value);
+        }, false);
+        
+        // 填充和描边
+        appearance.addEventListener('input', function(e) {
+            let target = e.target;
+            let type = target.dataset.type;
+            let value = target.value;
+            selected.setAttribute(type, value);
+        }, false)
+        // 创建一组标签
+        function createGroupElement(name, value) {
+            let div = document.createElement('div');
+            div.className = '';
+            let label = document.createElement('label');
+            label.innerText = name + '：';
+            let input = document.createElement('input');
+            input.type = 'range'
+            input.setAttribute('data-type', name);
+            input.value = value;
+            input.min = min;
+            input.max = max;
+            div.appendChild(label);
+            div.appendChild(input);
+            shapes.appendChild(div);
+        }
+
+        function createSvgElement(tagName, props) {
+            if (!tagName) {
+                return null;
+            }
+            let el = document.createElementNS('http://www.w3.org/2000/svg', tagName);
+            if (!props) {
+                return el;
+            }
+            let keys = Object.keys(props);
+            keys.length && keys.forEach((item) => {
+                el.setAttribute(item, props[item]);
+            });
+            return el;
+        }
+    </script>
+</body>
+
+</html>

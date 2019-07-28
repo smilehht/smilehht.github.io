@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         html,body, svg {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            background-color: #001122;
+            line-height: 0;
+            font-size: 0;
+        }
+    </style>
+</head>
+<body>
+    <svg id='svg' viewBox='-400 -300 800 600' preserveAspectRatio='xMidYMid slice'>
+        <defs>
+            <polygon id='star' points='0 -10 2 -2 10 0 2 2 0 10 -2 2 -10 0 -2 -2' fill='#fff'></polygon>
+        </defs>
+
+        <g id="real">
+
+            <g id="star-group"></g>
+
+            <g id="line-tower" transform='translate(200, 0)'>
+                <defs>
+                    <linearGradient id='tower' x1='0' y1='0' x2='1' y2='0'>
+                        <stop offset='0' stop-color='#999'></stop>
+                        <stop offset='1' stop-color='#333'></stop>
+                    </linearGradient>
+                    <radialGradient id='light' cx='0.5' cy='0.5' r='0.5'>
+                        <stop offset='0' stop-color='rgba(255, 255, 255, 0.8)'></stop>
+                        <stop offset='1' stop-color='rgba(255, 255, 255, 0)'></stop>
+                    </radialGradient>
+                    <clipPath id='light-clip'>
+                        <polygon points='0 0 -400 -15 -400 15' fill='rgba(255, 255, 255, 0.5)'>
+                            <animateTransform
+                                attributeName='transform'
+                                type='rotate'
+                                from='0'
+                                to='360'
+                                dur='10s'
+                                repeatCount='indefinite'
+                            ></animateTransform>
+                        </polygon>
+                        <circle cx='0' cy='0' r='2'></circle>
+                    </clipPath>
+                </defs>
+                <polygon points='0 0 5 50 -5 50' fill='url(#tower)'></polygon>
+                <ellipse clip-path='url(#light-clip)' cx='0' cy='0' rx='300' ry='100' fill='url(#light)'></ellipse>
+            </g>
+
+            <g id="moon">
+                <mask id="mask">
+                    <circle cx='-250' cy='-125' r='50' fill='yellow'></circle>
+                    <circle cx='-225' cy='-150' r='50' fill='black'></circle>
+                </mask>
+                <circle cx='-250' cy='-125' r='50' fill='yellow' mask='url(#mask)'></circle>
+            </g>
+        </g>
+        
+        <g id="reflect" transform='translate(0, 50)' mask='url(#fadding)'>
+            <defs>
+                <linearGradient id='fade' x1='0' y1='0' x2='0' y2='1'>
+                    <stop offset='0' stop-color='rgba(255, 255, 255, 0.3)'></stop>
+                    <stop offset='.6' stop-color='rgba(255, 255, 255, 0)'></stop>
+                </linearGradient>
+                <mask id='fadding'>
+                    <rect x='-400' y='0' width='800' height='300' fill='url(#fade)'></rect>
+                </mask>
+            </defs>
+            
+            <use xlink:href='#real' transform='scale(1, -1) translate(0, -50)'></use>
+        </g>
+        <line x1='-400' y1='50' x2='400' y2='50' stroke='#fff'></line>
+    </svg>
+</body>
+<script>
+    var svg = document.getElementById('svg');
+    var starRef = document.getElementById('star');
+    var starGroup = document.getElementById('star-group');
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var XLINK_NS = 'http://www.w3.org/1999/xlink';
+
+
+    var totalStars = 500;
+    renderStar()
+    // 渲染星星
+    function renderStar() {
+        while(totalStars--) {
+            var star = use(starRef);
+            star.setAttribute('opacity', random(0.1, 0.3)); 
+            star.setAttribute('transform', 'translate(' + random(-400, 400) + ',' + random(-300, 50) + ')'
+                +' scale(' + random(0.2, 0.6) + ')')
+            starGroup.appendChild(star);
+        }
+    }
+
+    // 产生use标签
+    function use(origin) {
+        var _use = document.createElementNS(SVG_NS, 'use');
+        _use.setAttributeNS(XLINK_NS, 'xlink:href', '#' + origin.id);
+        return _use;
+    }
+
+    // random
+    function random(min, max) {
+        return min + (max - min) * Math.random(max - min);
+    }
+</script>
+</html>
