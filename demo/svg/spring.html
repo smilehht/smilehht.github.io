@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html, body, #group {
+            width: 100%;
+            height: 100%;
+        }
+        input {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            width: 200px;
+            height: 30px;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <script src="./vector.js"></script>
+</head>
+<body>
+    <input id='input' type="text" placeholder="请输入点的数量">
+    <svg id='svg' width='100%' height='100%' viewBox='-400 -400 800 800'>
+        <path id='path' fill='none' stroke='gray'></path>
+        <g id="group"></g>
+    </svg>
+</body>
+<script>
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var svg = document.getElementById('svg');
+    var input = document.getElementById('input');
+    var path = document.getElementById('path');
+    var group = document.getElementById('group');
+    // 弹簧的自然长度
+    var relation = 300;
+    // 弹性系数
+    var k = 0.05;
+    var pointsArr = [];
+
+    init()
+
+    input.addEventListener('input', function(e) {
+        let value = e.target.value;
+
+        // 清空原画布
+        pointsArr = [];
+        group.innerHTML = '';
+
+        if (/^\d+$/.test(value)) {
+            if (value > 50) {
+                alert('输入值过大，请重新输入');
+                return;
+            }
+            createPoints(value);
+        }
+    });
+    function init() {
+        createPoints(6);
+        updateFrame();
+    }
+    function createPoints(vlaue) {
+        var points = vlaue;
+        var idx = 0
+        var stop;
+        while(idx++ < points) {
+            let color = 'hsl(' + idx * 360 /points + ', 100%, 60%)'
+            let item = {
+                name: '1',
+                color: color
+            }
+            let circle = document.createElementNS(SVG_NS, 'circle');
+            let x = random(-200, 200);
+            let y = random(-200, 200);
+            circle.setAttribute('fill', color)
+            circle.setAttribute('cx', x)
+            circle.setAttribute('cy', y)
+            circle.setAttribute('r', 10)
+            group.appendChild(circle)
+            
+            item.circle = circle;
+            item.s = new Vector(x, y);
+            item.v = new Vector();
+            item.a = new Vector();
+
+            pointsArr.push(item);
+        }
+
+
+    }
+
+    function updateFrame() {
+
+        var diffTime = 17;
+
+        diffTime /= 100;
+
+        var delta;
+        var x;
+
+        // 更新点的位置
+        pointsArr.forEach(function(pa) {
+            // 计算合力
+            var f = new Vector();
+            pointsArr.forEach(function(pb) {
+                if (pa == pb) return;
+
+                // pointsArr.s = s0 + v * t;
+                x = Vector.fromPoints(pa.s, pb.s);
+                delta = x.length() - relation;
+                // f = k * x
+                f = f.add(x.normalize(delta * k));
+            })
+            pa.a = f;
+            pa.v = pa.v.add(pa.a.multipy(diffTime)).multipy(0.99);
+            pa.s = pa.s.add(pa.v.multipy(diffTime));
+
+            pa.circle.setAttribute('cx', pa.s.x) 
+            pa.circle.setAttribute('cy', pa.s.y) 
+
+        })
+
+        // 更新连线
+        let pathArr = [];
+        pointsArr.forEach(function(pa) {
+            pointsArr.forEach(function(pb) {
+                if (pa == pb) {
+                    return;
+                }
+                pathArr.push(' M ' + pa.s.x + ' ' + pa.s.y + ' L ' + pb.s.x + ' ' + pb.s.y)
+            })
+        })
+        path.setAttribute('d', pathArr.join(' '));
+
+        stop = window.requestAnimationFrame(updateFrame);
+    }
+
+
+    function random(min, max) {
+        return min + (max - min) * Math.random();
+    }
+</script>
+</html>
