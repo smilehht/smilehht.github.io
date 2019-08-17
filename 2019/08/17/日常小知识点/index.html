@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016 | smilehht</title>
+  <title>日常小知识点 | smilehht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="smilehht">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+  <meta name="description" content="1、图片加载失败解决办法在实际场景中，我们可能会遇到图片加载失败的情况，如果加载失败有些浏览器会出现裂图，对于用户体验极其不友好，对于这种情况的解决办法是在加载失败后做其他的处理，请看一下代码：">
+<meta name="keywords" content="summary">
+<meta property="og:type" content="article">
+<meta property="og:title" content="日常小知识点">
+<meta property="og:url" content="http://yoursite.com/2019/08/17/日常小知识点/index.html">
 <meta property="og:site_name" content="smilehht">
+<meta property="og:description" content="1、图片加载失败解决办法在实际场景中，我们可能会遇到图片加载失败的情况，如果加载失败有些浏览器会出现裂图，对于用户体验极其不友好，对于这种情况的解决办法是在加载失败后做其他的处理，请看一下代码：">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-17T10:09:18.845Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="smilehht">
+<meta name="twitter:title" content="日常小知识点">
+<meta name="twitter:description" content="1、图片加载失败解决办法在实际场景中，我们可能会遇到图片加载失败的情况，如果加载失败有些浏览器会出现裂图，对于用户体验极其不友好，对于这种情况的解决办法是在加载失败后做其他的处理，请看一下代码：">
   
     <link rel="alternative" href="/atom.xml" title="smilehht" type="application/atom+xml">
   
@@ -152,60 +157,201 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-日常小知识点" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/01/02/My-first-post/" class="archive-article-date">
-  	<time datetime="2016-01-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/01/02/My-first-post/">My-first-post</a>
+    <h1 class="article-title" itemprop="name">
+      日常小知识点
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/17/日常小知识点/" class="archive-article-date">
+  	<time datetime="2019-08-17T09:05:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1、图片加载失败解决办法</strong><br>在实际场景中，我们可能会遇到图片加载失败的情况，如果加载失败有些浏览器会出现裂图，对于用户体验极其不友好，对于这种情况的解决办法是在加载失败后做其他的处理，请看一下代码：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&apos;a.png&apos; onerror=&apos;imgError(this)&apos;&gt;</span><br><span class="line"></span><br><span class="line">function imgError(target) &#123;</span><br><span class="line">    // 重新给src赋值</span><br><span class="line">    target.src = &apos;b.png&apos;;</span><br><span class="line">    // 防止再次error，触发死循环</span><br><span class="line">    targer.onerror = null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2、animation动画停留在最后一帧</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">animation-fill-mode: forwards;</span><br></pre></td></tr></table></figure></p>
+<p><strong>3、从url中取value</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">getQueryString(name) &#123;</span><br><span class="line">    let reg = new RegExp(&apos;(^|&amp;)&apos; + name + &apos;=([^&amp;]*)(&amp;|$)&apos;);</span><br><span class="line">    //search,查询？后面的参数，并匹配正则</span><br><span class="line">    let r = window.location.search.substr(1).match(reg);</span><br><span class="line">    if (r != null)</span><br><span class="line">        return unescape(r[2]);</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>4、获取视频播放进度</strong><br>1、视频的播放: vedio_dom.play();<br>2、视频的当前播放时间: vedio_dom.currentTime<br>3、视频的总时长: vedio_dom.duration<br>4、视频的播放进度: 每隔一定时间获取currentTime，通过计算currentTime / duration即可得到视频的播放进度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- vue示例 --&gt;</span><br><span class="line">function countProgress() &#123;</span><br><span class="line">    this.timer = setInterval(() =&gt; &#123;</span><br><span class="line">        let vedio = this.$refs.vedio;</span><br><span class="line">        let ratio = this.ratio;</span><br><span class="line">        if (vedio.currentTime &amp;&amp; vedio.duration) &#123;</span><br><span class="line">            this.ratio = vedio.currentTime * 100 / vedio.duration;</span><br><span class="line">        &#125;</span><br><span class="line">        // loading状态</span><br><span class="line">        this.isLoading = !this.ratio || ratio == this.ratio;</span><br><span class="line">        if (this.ratio &gt; 99) &#123;</span><br><span class="line">            this.isPlay = false;</span><br><span class="line">            clearInterval(this.timer)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, 200)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>5、iOS不支持webp解决办法</strong><br>WebP格式图片是谷歌（google）开发的一种旨在加快图片加载速度的图片格式，图片压缩体积大约只有JPEG的2/3，如果广泛使用webp格式图片能大大提升页面的加载速度，而且可以降低公司服务器的带宽，节约开支。</p>
+<p>一切看似web很美好，然鹅，iOS不支持webp，声泪俱下啊。</p>
+<p>尽管iOS不支持webp，但是对于国内来说，iOS系统的占比并不高，大多数还是以Android为主，也就是说采用webp格式做性能优化还是有一定价值的，而且即使iOS系统不兼容也可以做兼容嘛。</p>
+<p>解决思路：<br>1、在安卓下采用webp格式图片，在iOS下使用费webp格式图片(前提是公司服务器支持webp格式图片)<br>2、如果采用webp格式导致图片打不开的情况，可以采用上述<strong>图片加载失败解决办法</strong>解决</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">My-first-post</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">summary</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/17/日常小知识点/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/21/svg/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">svg</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -234,8 +380,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

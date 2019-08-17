@@ -39,6 +39,7 @@
     // 弹性系数
     var k = 0.05;
     var pointsArr = [];
+    var startTime;
 
     init()
 
@@ -58,6 +59,7 @@
         }
     });
     function init() {
+        startTime = +new Date();
         createPoints(6);
         updateFrame();
     }
@@ -133,6 +135,12 @@
             })
         })
         path.setAttribute('d', pathArr.join(' '));
+
+        var endTime = +new Date();
+        if (endTime - startTime > 15000) {
+            cancelAnimationFrame(stop);
+            return;
+        }
 
         stop = window.requestAnimationFrame(updateFrame);
     }
