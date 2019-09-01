@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>smilehht</title>
+  <title>video使用总结 | smilehht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="smilehht">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+  <meta name="description" content="最近使用h5的video，遇到一些问题，总结一下。 1、video标签的属性 video支持的属性">
+<meta name="keywords" content="video">
+<meta property="og:type" content="article">
+<meta property="og:title" content="video使用总结">
+<meta property="og:url" content="http://yoursite.com/2019/09/01/video使用总结/index.html">
 <meta property="og:site_name" content="smilehht">
+<meta property="og:description" content="最近使用h5的video，遇到一些问题，总结一下。 1、video标签的属性 video支持的属性">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-01T09:21:49.393Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="smilehht">
+<meta name="twitter:title" content="video使用总结">
+<meta name="twitter:description" content="最近使用h5的video，遇到一些问题，总结一下。 1、video标签的属性 video支持的属性">
   
     <link rel="alternative" href="/atom.xml" title="smilehht" type="application/atom+xml">
   
@@ -152,34 +157,88 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-video使用总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/22/webpack/">webpack使用参数说明</a>
+    <h1 class="article-title" itemprop="name">
+      video使用总结
     </h1>
   
 
         
-        <a href="/2017/06/22/webpack/" class="archive-article-date">
-  	<time datetime="2017-06-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
+        <a href="/2019/09/01/video使用总结/" class="archive-article-date">
+  	<time datetime="2019-09-01T02:42:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1、entry-用来定义入口文件，可以是字符串或者是对象"><a href="#1、entry-用来定义入口文件，可以是字符串或者是对象" class="headerlink" title="1、entry 用来定义入口文件，可以是字符串或者是对象"></a>1、entry 用来定义入口文件，可以是字符串或者是对象</h3>
-        
-          <a class="article-more-a" href="/2017/06/22/webpack/#more">more >></a>
-        
+        <p>最近使用h5的video，遇到一些问题，总结一下。</p>
+<p><strong>1、video标签的属性</strong></p>
+<p><a href="https://www.w3school.com.cn/tags/tag_video.asp" target="_blank" rel="noopener">video支持的属性</a></p>
+<a id="more"></a>
+<p><strong>常用属性:</strong></p>
+<ul>
+<li>autoplay: 自动播放</li>
+<li>controls: 显示播放控件</li>
+<li>poster: 视频预览图</li>
+<li>preload: 视频预加载</li>
+<li>loop: 是否循环播放</li>
+<li>muted: 静音</li>
+</ul>
+<p><strong>2、video DOM对象的属性和支持的事件</strong></p>
+<p>video DOM对象属于媒体对象，比一般DOM对象的属性多，<a href="https://www.w3school.com.cn/jsref/dom_obj_video.asp" target="_blank" rel="noopener">video DOM的属性、事件</a></p>
+<p><strong>3、隐藏video控件</strong></p>
+<ul>
+<li>1、video标签去除controls属性</li>
+<li>2、部分机型仍会显示video控件，可通过css来隐藏<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">video::-webkit-media-controls-enclosure &#123;</span><br><span class="line">    display:none !important;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">&#125;</span><br><span class="line">video::-webkit-media-controls-panel &#123;</span><br><span class="line">    display: none!important;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">&#125;</span><br><span class="line">video::-webkit-media-controls-panel-container &#123;</span><br><span class="line">    display: none!important;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">&#125;</span><br><span class="line">video::--webkit-media-controls-play-button &#123;</span><br><span class="line">    display: none!important;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">&#125;</span><br><span class="line">video::-webkit-media-controls-start-playback-button &#123;</span><br><span class="line">    display: none!important;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">&#125;</span><br><span class="line">video::-webkit-media-controls &#123;</span><br><span class="line">    display: none!important;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>除此以外，在部分机型通过上面两种方法也不能隐藏控件，隐藏控件仍然存在一定的兼容性</p>
+<p><strong>4、通过canvas的drawImage实现视频播放效果</strong></p>
+<p>对于不支持隐藏控件的浏览器，还有另一种解决办法，它的原理是将视频的每一帧通过canvas来展示，通过控制canvas来控制视频的播放，进而控制了canvas的显示，具体代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&apos;video&apos;&gt;</span><br><span class="line">    &lt;video id=&apos;video&apos; controls autoplay src=&quot;video.mp4&quot;&gt;&lt;/video&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&apos;video&apos;&gt;</span><br><span class="line">    &lt;canvas id=&apos;canvas&apos; class=&apos;canvas&apos;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var video = document.getElementById(&apos;video&apos;);</span><br><span class="line">    var canvas = document.getElementById(&apos;canvas&apos;);</span><br><span class="line">    var ctx = canvas.getContext(&apos;2d&apos;);</span><br><span class="line">    var stop;</span><br><span class="line">    function animation() &#123;</span><br><span class="line">        if (video.paused) &#123;</span><br><span class="line">            // 视频暂停了</span><br><span class="line">            cancelAnimationFrame(stop)</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);</span><br><span class="line">        stop = requestAnimationFrame(animation);</span><br><span class="line">    &#125;</span><br><span class="line">    video.addEventListener(&apos;play&apos;, function() &#123;</span><br><span class="line">        animation()</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这种方式实现起来并不复杂，但是对于清晰的要求高的场合可能不太适用，通过drawImage会损失图片的清晰度，对于图片清晰度要求不高的可以考虑使用这种方法</p>
+<p><strong>5、小窗口播放</strong><br>在移动端中，有些机型点击视频默认全屏播放，但是有些时候需要在小窗口中播放，可以通过设置playsInline属性实现小窗口播放<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;video</span><br><span class="line">    src=&apos;xxxx.mp4&apos;</span><br><span class="line">    playsInline</span><br><span class="line">    webkit-playsinline</span><br><span class="line">    x5-playsinline</span><br><span class="line">   /&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>6、设置播放器的方向(横屏、竖屏)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">横屏</span><br><span class="line">&lt;video x5-video-player-type=&quot;h5&quot; x5-video-orientation=&quot;landscape&quot;/&gt;</span><br><span class="line"></span><br><span class="line">竖屏</span><br><span class="line">&lt;video x5-video-player-type=&quot;h5&quot; x5-video-orientation=&quot;portrait&quot;/&gt;</span><br><span class="line"></span><br><span class="line">跟随手机自动旋转</span><br><span class="line">&lt;video x5-video-player-type=&quot;h5&quot; x5-video-orientation=&quot;landscape|portrait&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>7、获取视频播放进度</strong><br>1、视频的播放: vedio_dom.play();<br>2、视频的当前播放时间: vedio_dom.currentTime<br>3、视频的总时长: vedio_dom.duration<br>4、视频的播放进度: 每隔一定时间获取currentTime，通过计算currentTime / duration即可得到视频的播放进度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- vue示例 --&gt;</span><br><span class="line">function countProgress() &#123;</span><br><span class="line">    this.timer = setInterval(() =&gt; &#123;</span><br><span class="line">        let vedio = this.$refs.vedio;</span><br><span class="line">        let ratio = this.ratio;</span><br><span class="line">        if (vedio.currentTime &amp;&amp; vedio.duration) &#123;</span><br><span class="line">            this.ratio = vedio.currentTime * 100 / vedio.duration;</span><br><span class="line">        &#125;</span><br><span class="line">        // loading状态</span><br><span class="line">        this.isLoading = !this.ratio || ratio == this.ratio;</span><br><span class="line">        if (this.ratio &gt; 99) &#123;</span><br><span class="line">            this.isPlay = false;</span><br><span class="line">            clearInterval(this.timer)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, 200)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -190,7 +249,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">video</a>
         		</li>
       		
 		</ul>
@@ -199,16 +258,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/22/webpack/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/01/video使用总结/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/17/日常小知识点/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">日常小知识点</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -223,166 +341,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-require" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/02/require/">Require</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/02/require/" class="archive-article-date">
-  	<time datetime="2017-01-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1、产生背景"><a href="#1、产生背景" class="headerlink" title="1、产生背景"></a>1、产生背景</h3><p>​一个网页文件中引入多个javascript文件时，在页面加载的过程中，页面会停止渲染，加载的文件越多，网页响应的时间越长，而且有些JS文件存在依赖关系，当依赖关系变得复杂时，代码的编写和维护就变得困难。因此，RequireJS应运而生，它主要为了解决两个问题：</p>
-        
-          <a class="article-more-a" href="/2017/01/02/require/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">require</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/02/require/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-My-first-post" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/02/My-first-post/">My-first-post</a>
-    </h1>
-  
-
-        
-        <a href="/2016/01/02/My-first-post/" class="archive-article-date">
-  	<time datetime="2016-01-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">My-first-post</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/01/02/My-first-post/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -411,8 +395,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
