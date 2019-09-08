@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="smilehht">
 <meta property="og:description" content="最近使用h5的video，遇到一些问题，总结一下。 1、video标签的属性 video支持的属性">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-01T09:21:49.393Z">
+<meta property="og:updated_time" content="2019-09-03T14:45:43.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="video使用总结">
 <meta name="twitter:description" content="最近使用h5的video，遇到一些问题，总结一下。 1、video标签的属性 video支持的属性">
@@ -206,6 +206,8 @@
 <p><strong>6、设置播放器的方向(横屏、竖屏)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">横屏</span><br><span class="line">&lt;video x5-video-player-type=&quot;h5&quot; x5-video-orientation=&quot;landscape&quot;/&gt;</span><br><span class="line"></span><br><span class="line">竖屏</span><br><span class="line">&lt;video x5-video-player-type=&quot;h5&quot; x5-video-orientation=&quot;portrait&quot;/&gt;</span><br><span class="line"></span><br><span class="line">跟随手机自动旋转</span><br><span class="line">&lt;video x5-video-player-type=&quot;h5&quot; x5-video-orientation=&quot;landscape|portrait&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
 <p><strong>7、获取视频播放进度</strong><br>1、视频的播放: vedio_dom.play();<br>2、视频的当前播放时间: vedio_dom.currentTime<br>3、视频的总时长: vedio_dom.duration<br>4、视频的播放进度: 每隔一定时间获取currentTime，通过计算currentTime / duration即可得到视频的播放进度</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- vue示例 --&gt;</span><br><span class="line">function countProgress() &#123;</span><br><span class="line">    this.timer = setInterval(() =&gt; &#123;</span><br><span class="line">        let vedio = this.$refs.vedio;</span><br><span class="line">        let ratio = this.ratio;</span><br><span class="line">        if (vedio.currentTime &amp;&amp; vedio.duration) &#123;</span><br><span class="line">            this.ratio = vedio.currentTime * 100 / vedio.duration;</span><br><span class="line">        &#125;</span><br><span class="line">        // loading状态</span><br><span class="line">        this.isLoading = !this.ratio || ratio == this.ratio;</span><br><span class="line">        if (this.ratio &gt; 99) &#123;</span><br><span class="line">            this.isPlay = false;</span><br><span class="line">            clearInterval(this.timer)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, 200)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>8、从指定位置播放</strong><br>通过改变video_dom.currentTime的方式来改变视频的播放进度，然而，这种方式有时会不起效。在视频准备好可以播放前设置currentTime不会生效，解决方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">video_dom.addEventListener(&apos;loadedmetadata&apos;, () =&gt; &#123;</span><br><span class="line">    video_dom.currentTime = 100</span><br><span class="line">    video_dom.play();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -476,7 +478,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">My-first-post</a>
+                <a href="javascript:void(0)" class="js-tag color5">copy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,7 +502,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">flex</a>
+                <a href="javascript:void(0)" class="js-tag color2">full-screen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">My-first-post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,11 +518,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">full-screen</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grid</a>
+                <a href="javascript:void(0)" class="js-tag color5">flex</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,6 +550,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">video</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">svg</a>
               </li>
              
@@ -556,14 +566,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">微信分享</a>
               </li>
              
@@ -572,11 +574,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">copy</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">video</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>

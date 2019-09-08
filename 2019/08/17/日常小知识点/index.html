@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="smilehht">
 <meta property="og:description" content="1、图片加载失败解决办法在实际场景中，我们可能会遇到图片加载失败的情况，如果加载失败有些浏览器会出现裂图，对于用户体验极其不友好，对于这种情况的解决办法是在加载失败后做其他的处理，请看一下代码：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-17T10:09:18.845Z">
+<meta property="og:updated_time" content="2019-09-08T05:02:37.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日常小知识点">
 <meta name="twitter:description" content="1、图片加载失败解决办法在实际场景中，我们可能会遇到图片加载失败的情况，如果加载失败有些浏览器会出现裂图，对于用户体验极其不友好，对于这种情况的解决办法是在加载失败后做其他的处理，请看一下代码：">
@@ -189,6 +189,9 @@
 <p>一切看似web很美好，然鹅，iOS不支持webp，声泪俱下啊。</p>
 <p>尽管iOS不支持webp，但是对于国内来说，iOS系统的占比并不高，大多数还是以Android为主，也就是说采用webp格式做性能优化还是有一定价值的，而且即使iOS系统不兼容也可以做兼容嘛。</p>
 <p>解决思路：<br>1、在安卓下采用webp格式图片，在iOS下使用费webp格式图片(前提是公司服务器支持webp格式图片)<br>2、如果采用webp格式导致图片打不开的情况，可以采用上述<strong>图片加载失败解决办法</strong>解决</p>
+<p><strong>6、优雅的实现兄弟间的分割线</strong><br>在项目中经常会遇到一系列的item之间有一些分割线，或者其他的样式，一般最后一个元素没有样式。</p>
+<p>大多数都会首先会给每个元素添加一个样式，然后通过伪元素把最后一元素的样式去掉，具体代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">    border-bottom: 1px solid #ddd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.item:last-child &#123;</span><br><span class="line">    border-bottom: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样看起来并没有问题，但是我们能不能把代码写的更加优雅些，一句话实现呢？大家都知道，css中有一个兄弟选择器+，可以选择后面的兄弟元素，那么我们通过给每个元素加上border-top，这样通过一句代码实现了分割线，具体代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item + .item &#123;</span><br><span class="line">    border-top: 1px solid #ddd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -469,7 +472,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">My-first-post</a>
+                <a href="javascript:void(0)" class="js-tag color5">copy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,7 +496,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">flex</a>
+                <a href="javascript:void(0)" class="js-tag color2">full-screen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">My-first-post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">grid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,11 +512,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">full-screen</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grid</a>
+                <a href="javascript:void(0)" class="js-tag color5">flex</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,6 +544,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">video</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">svg</a>
               </li>
              
@@ -549,14 +560,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">微信分享</a>
               </li>
              
@@ -565,11 +568,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">copy</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">video</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>
